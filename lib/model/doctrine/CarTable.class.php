@@ -16,4 +16,19 @@ class CarTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Car');
     }
+
+    /**
+     * Finds all cars and returns them as an objects
+     *  
+     * @author Wojciech Sznapka <wojciech.sznapka@xsolve.pl> 
+     * @access public
+     * 
+     * @return Car[]
+     */
+    public function findAllCars()
+    {
+      $dql = Doctrine_Query::create()
+        ->From("Car c");
+      return $dql->execute();
+    }
 }
