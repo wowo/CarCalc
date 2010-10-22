@@ -1,0 +1,21 @@
+Car:
+  astra:
+    name:   "Astra Wojtka"
+    model:  Astra II
+    brand:  Opel
+    year:   2001
+  corsa:
+    name:   "Corsa Ani"
+    model:  Corsa II
+    brand:  Opel
+    year:   2002
+
+User:
+  wojtek:
+    username: wowo
+    password: asdfASDF1
+    Cars:     [astra, corsa]
+  ania:
+    username: ania
+    password: asdfASDF1
+    Cars:     [corsa]

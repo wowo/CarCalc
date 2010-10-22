@@ -8,3 +8,9 @@ all:
       dsn:      mysql:host=localhost;dbname=CarCalc
       username: root
       password: 
+
+test:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
+      dsn: 'sqlite::memory:'

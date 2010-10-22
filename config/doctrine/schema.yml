@@ -1,0 +1,30 @@
+User:
+  columns:
+    id:         {type: integer, primary: true, autoincrement: true}
+    username:   {type: string(255), notnull: true}
+    password:   {type: string(255), notnull: true}
+    lastLogin:  {type: timestamp}
+  actAs: 
+    Timestampable: ~
+  
+Car:
+  columns:
+    id:         {type: integer, primary: true, autoincrement: true}
+    name:       {type: string(255), notnull: true}
+    model:      {type: string(255), notnull: true}
+    brand:      {type: string(255), notnull: true}
+    year:       {type: int}
+  actAs: 
+    Timestampable: ~
+  relations:
+    Users:
+      class:        User
+      foreignAlias: Cars
+      refClass:     Car2User
+      local:        user_id
+      foreign:      car_id
+
+Car2User: 
+  columns:
+    car_id:     {type: integer, notnull: true}
+    user_id:    {type: integer, notnull: true}
