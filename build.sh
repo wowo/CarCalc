@@ -1,21 +1,26 @@
 #!/bin/bash
 
-echo "Creating cache dir"
+echo ">> build     Creating cache dir"
+
 if [ -e "cache" ]
 then
-  echo "Cache dir already exists"
+  echo ">> build     Cache dir already exists"
 else
   mkdir cache
 fi
 
 
-echo "Creating log dir"
+echo ">> build     Creating log dir"
 if [ -e "logs" ]
 then
-  echo "Logs dir already exists"
+  echo ">> build     Logs dir already exists"
 else
   mkdir logs
 fi
 
+echo ">> build     Fixing project permissions" 
 ./symfony project:permissions
+echo ">> build     Clearing cache" 
+./symfony cc
+echo ">> build     Running all unit tests" 
 ./symfony test:unit $*
