@@ -22,5 +22,5 @@ echo ">> build     Fixing project permissions"
 ./symfony project:permissions
 echo ">> build     Clearing cache" 
 ./symfony cc
-echo ">> build     Running all unit tests" 
-./symfony test:unit $*
+echo ">> build     Running all tests" 
+./symfony test:all -t --xml="build.xml"
