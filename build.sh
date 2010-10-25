@@ -18,4 +18,4 @@ else
 fi
 
 ./symfony project:permissions
-./symfony test:unit
+./symfony test:unit $*
