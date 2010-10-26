@@ -28,7 +28,29 @@ class CarTable extends Doctrine_Table
     public function findAllCars()
     {
       $dql = Doctrine_Query::create()
-        ->From("Car c");
+        ->from("Car c")
+        ->leftJoin("c.Users");
+      return $dql->execute();
+    }
+
+    /**
+     * Finds all cars assigned to user given by user id
+     *  
+     * @author Wojciech Sznapka <wojciech.sznapka@xsolve.pl> 
+     * @access public
+     * 
+     * @param  int $userId 
+     * @return Car[]
+     */
+    public function findAllCarsAssignedToUser($userId)
+    {
+      if ((int)$userId == 0) {
+        throw new InvalidArgumentException("userId should be int");
+      }
+      $dql = Doctrine_Query::create()
+        ->from("Car c")
+        ->leftJoin("c.Users u")
+        ->where("u.id = ?", $userId);
       return $dql->execute();
     }
 }

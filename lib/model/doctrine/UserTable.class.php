@@ -16,4 +16,20 @@ class UserTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('User');
     }
+
+    /**
+     * Finds all users 
+     *  
+     * @author Wojciech Sznapka <wojciech.sznapka@xsolve.pl> 
+     * @access public
+     * 
+     * @return User[]
+     */
+    public function findAllUsers()
+    {
+      $dql = Doctrine_Query::create()
+        ->from("User u")
+        ->leftJoin("u.Cars");
+      return $dql->execute();
+    }
 }
