@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Build script used to prepare project for being tested automatically and output results (build.xml - jUnit compilant) for Bamboo
+#
+# Author: Wojciech Sznapka <wojciech.sznapka@xsolve.pl>
+# Date: 2010-10-28
+
 echo ">> build     Creating cache dir"
 
 if [ -e "cache" ]
