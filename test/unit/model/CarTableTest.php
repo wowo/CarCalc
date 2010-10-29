@@ -38,7 +38,7 @@ class CarTableTest extends TestSuite
   public function findAllCarsTest()
   {
     $objects = Doctrine::getTable("Car")->findAllCars();
-    $this->is(count($objects), 5, sprintf("We have got 2 cars"));
+    $this->is(count($objects), 2, sprintf("We have got 2 cars"));
     $this->collection_isa_ok($objects, "Car", "All objects are instance of 'Car'");
   }
 
