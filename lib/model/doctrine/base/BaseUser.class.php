@@ -10,17 +10,20 @@
  * @property string $password
  * @property timestamp $lastLogin
  * @property Doctrine_Collection $Cars
+ * @property Doctrine_Collection $FuelBills
  * 
  * @method integer             getId()        Returns the current record's "id" value
  * @method string              getUsername()  Returns the current record's "username" value
  * @method string              getPassword()  Returns the current record's "password" value
  * @method timestamp           getLastLogin() Returns the current record's "lastLogin" value
  * @method Doctrine_Collection getCars()      Returns the current record's "Cars" collection
+ * @method Doctrine_Collection getFuelBills() Returns the current record's "FuelBills" collection
  * @method User                setId()        Sets the current record's "id" value
  * @method User                setUsername()  Sets the current record's "username" value
  * @method User                setPassword()  Sets the current record's "password" value
  * @method User                setLastLogin() Sets the current record's "lastLogin" value
  * @method User                setCars()      Sets the current record's "Cars" collection
+ * @method User                setFuelBills() Sets the current record's "FuelBills" collection
  * 
  * @package    CarCalc
  * @subpackage model
@@ -57,8 +60,12 @@ abstract class BaseUser extends sfDoctrineRecord
         parent::setUp();
         $this->hasMany('Car as Cars', array(
              'refClass' => 'Car2User',
-             'local' => 'car_id',
-             'foreign' => 'user_id'));
+             'local' => 'carId',
+             'foreign' => 'userId'));
+
+        $this->hasMany('FuelBill as FuelBills', array(
+             'local' => 'id',
+             'foreign' => 'userId'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

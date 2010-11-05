@@ -11,19 +11,22 @@
  * @property string $brand
  * @property int $year
  * @property Doctrine_Collection $Users
+ * @property Doctrine_Collection $FuelBills
  * 
- * @method integer             getId()    Returns the current record's "id" value
- * @method string              getName()  Returns the current record's "name" value
- * @method string              getModel() Returns the current record's "model" value
- * @method string              getBrand() Returns the current record's "brand" value
- * @method int                 getYear()  Returns the current record's "year" value
- * @method Doctrine_Collection getUsers() Returns the current record's "Users" collection
- * @method Car                 setId()    Sets the current record's "id" value
- * @method Car                 setName()  Sets the current record's "name" value
- * @method Car                 setModel() Sets the current record's "model" value
- * @method Car                 setBrand() Sets the current record's "brand" value
- * @method Car                 setYear()  Sets the current record's "year" value
- * @method Car                 setUsers() Sets the current record's "Users" collection
+ * @method integer             getId()        Returns the current record's "id" value
+ * @method string              getName()      Returns the current record's "name" value
+ * @method string              getModel()     Returns the current record's "model" value
+ * @method string              getBrand()     Returns the current record's "brand" value
+ * @method int                 getYear()      Returns the current record's "year" value
+ * @method Doctrine_Collection getUsers()     Returns the current record's "Users" collection
+ * @method Doctrine_Collection getFuelBills() Returns the current record's "FuelBills" collection
+ * @method Car                 setId()        Sets the current record's "id" value
+ * @method Car                 setName()      Sets the current record's "name" value
+ * @method Car                 setModel()     Sets the current record's "model" value
+ * @method Car                 setBrand()     Sets the current record's "brand" value
+ * @method Car                 setYear()      Sets the current record's "year" value
+ * @method Car                 setUsers()     Sets the current record's "Users" collection
+ * @method Car                 setFuelBills() Sets the current record's "FuelBills" collection
  * 
  * @package    CarCalc
  * @subpackage model
@@ -65,8 +68,12 @@ abstract class BaseCar extends sfDoctrineRecord
         parent::setUp();
         $this->hasMany('User as Users', array(
              'refClass' => 'Car2User',
-             'local' => 'user_id',
-             'foreign' => 'car_id'));
+             'local' => 'userId',
+             'foreign' => 'carId'));
+
+        $this->hasMany('FuelBill as FuelBills', array(
+             'local' => 'id',
+             'foreign' => 'carId'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

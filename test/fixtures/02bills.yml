@@ -1,0 +1,80 @@
+FuelType:
+  pb95:
+    name: Benzyna 95
+    fuelTankRate: 1
+  pb98:
+    name: Benzyna 98
+    fuelTankRate: 1
+  lpg:
+    name: Gaz
+    fuelTankRate: 0.8
+
+ShopBill:
+  shopBill1:
+    date: "2010-10-06"
+    place: AutoGaz Rzepka
+    totalPrice: 2480
+    Car: astra
+    User: wojtek
+
+FuelBill:
+  lgpBill1:
+    date: "2010-10-08"
+    place: Bliska Zory
+    totalPrice: 62.52
+    Car: astra
+    User: wojtek
+    FuelType: lpg
+    liters: 28.55
+    priceForLiter: 2.19
+    distanceTillLastBill: -
+  lpgBill2:
+    date: "2010-10-13"
+    place: Bliska Gliwice
+    totalPrice: 91.53
+    Car: astra
+    User: wojtek
+    FuelType: lpg
+    liters: 39.97
+    priceForLiter: 2.29
+    distanceTillLastBill: 413.00
+  lpgBill3:
+    date: "2010-10-20"
+    place: Orlen Gliwice, Wezel
+    totalPrice: 83.83
+    Car: astra
+    User: wojtek
+    FuelType: lpg
+    liters: 36.29
+    priceForLiter: 2.31
+    distanceTillLastBill: 385.00
+  lpgBill4:
+    date: "2010-10-24"
+    place: Lukoil Mikolow, Wislanka
+    totalPrice: 79.92
+    Car: astra
+    User: wojtek
+    FuelType: lpg
+    liters: 36.00
+    priceForLiter: 2.22
+    distanceTillLastBill: 370.40
+  lpgBill5:
+    date: "2010-10-28"
+    place: Orlen Mikolow, Auchan
+    totalPrice: 87.83
+    Car: astra
+    User: wojtek
+    FuelType: lpg
+    liters: 38.69
+    priceForLiter: 2.27
+    distanceTillLastBill: 366.60
+  petrolBill1:
+    date: "2010-10-22"
+    place: BP Gliwice, Rybnicka
+    totalPrice: 91.04
+    Car: astra
+    User: wojtek
+    FuelType: pb95
+    liters: 20.23
+    priceForLiter: 4.5
+    distanceTillLastBill: -

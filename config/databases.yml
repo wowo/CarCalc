@@ -9,6 +9,12 @@ all:
       username: root
       password: 
 
+dev:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
+      dsn: 'sqlite:%SF_DATA_DIR%/CarCalc.db'
+
 test:
   doctrine:
     class: sfDoctrineDatabase

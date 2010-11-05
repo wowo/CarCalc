@@ -21,10 +21,68 @@ Car:
       class:        User
       foreignAlias: Cars
       refClass:     Car2User
-      local:        user_id
-      foreign:      car_id
+      local:        userId
+      foreign:      carId
 
 Car2User: 
   columns:
-    car_id:     {type: integer, notnull: true}
-    user_id:    {type: integer, notnull: true}
+    carId:     {type: integer, notnull: true}
+    userId:    {type: integer, notnull: true}
+
+FuelType:
+  columns:
+    name:         {type: string(255), notnull: true}
+    fuelTankRate: {type: float}
+
+Bill:
+  columns:
+    date:       {type: timestamp, notnull: true}
+    place:      {type: string(255), notnull: true}
+    totalPrice: {type: float}
+    carId:      {type: integer, notnull: true}
+    userId:     {type: integer, notnull: true}
+  actAs:
+    Timestampable: ~
+
+
+FuelBill:
+  inheritance:
+    extends:    Bill
+    type:       column_aggregation
+    keyField:   type
+    keyValue:   'F'
+  columns:
+    fuelTypeId:           {type: integer}
+    liters:               {type: float}
+    priceForLiter:        {type: float}
+    distanceTillLastBill: {type: float}
+  relations:
+    FuelType:
+      class: FuelType
+      local: fuelTypeId
+    Car:
+      class: Car
+      local: carId
+      foreignAlias: FuelBills
+    User:
+      class: User
+      local: userId
+      foreignAlias: FuelBills
+    
+ShopBill:
+  inheritance:
+    extends:    Bill
+    type:       column_aggregation
+    keyField:   type
+    keyValue:   'S'
+  columns:
+    description: {type: clob}
+  relations:
+    Car:
+      class: Car
+      local: carId
+      foreignAlias: FuelBills
+    User:
+      class: User
+      local: userId
+      foreignAlias: FuelBills
