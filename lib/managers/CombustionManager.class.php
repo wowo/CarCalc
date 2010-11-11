@@ -17,7 +17,9 @@ class CombustionManager
       throw new InvalidArgumentException("Param should be collection (or at least array)", 1);
     }
 
-    if (count($bills) > 0) {
+    if (count($bills) == 1) {
+      throw new DomainException("Only 1 bill available, combustion can be calculated based on it");
+    } elseif (count($bills) > 0) {
       $billsTypes = $this->_getBillsTypes($bills);
       if (count($billsTypes) > 1) {
         throw new InvalidArgumentException("There bills of different type: " . implode(",", $billsTypes), 2);
